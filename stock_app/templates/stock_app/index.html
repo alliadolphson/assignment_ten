@@ -1,0 +1,22 @@
+<p>Portfolio Report for Bob Smith</p>
+
+<form action="/" method="POST">
+	{% for stock in stocks %}
+		<span>
+			<input type="checkbox" name="selected_stocks" value="{{stock.stock_name}}"
+			{% if stock.stock_name in selected_checkboxes %}
+				checked
+			{% endif %}>
+			</input>
+			<label>{{stock.stock_name}}</label>
+		</span>
+	{% endfor %}
+	<div>
+		<br />
+		<input type="submit" value="Generate Report" />
+	</div>
+</form>
+
+<div id="chart">
+   <embed type="image/svg+xml" src= {{ chart|safe }} />
+</div>
